@@ -5,13 +5,7 @@ exports.handler = (event, context, callback) => {
 
     var originURL = process.env.ORIGIN_URL || '*';
 
-    emitLambdaAge();
-
-    // This variable can be updated and checked in to your repository 
-    // to update the number of SAM squirrels on the screen.
-    var samCount = 5;
-
-    // Or you can update your Lambda function's environment variable.
+    var samCount = 2;
     var samMultiplier = process.env.SAM_MULTIPLIER || 1;
 
     var totalSAMs = samCount * samMultiplier;
@@ -30,13 +24,4 @@ exports.handler = (event, context, callback) => {
             "Access-Control-Allow-Origin": originURL
         }
     });
-}
-
-function emitLambdaAge() {
-    var now = moment();
-    var lambdaAnnouncement = moment('2014-11-04');
-
-    var daysOld = now.diff(lambdaAnnouncement, 'days');
-
-    console.log('Lambda is ' + daysOld + ' days old!');
 }
